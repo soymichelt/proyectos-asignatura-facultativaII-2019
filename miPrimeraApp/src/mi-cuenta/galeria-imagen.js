@@ -20,10 +20,14 @@ const GaleriaImagen = (props) => {
                 source={imagen}
                 style={estilos.imagen}
             >
-                <View style={estilos.fondoTexto}>
-                    <Text style={estilos.texto}>
-                        {titulo}
-                    </Text>
+                <View
+                    style={estilos.contenedorTexto}
+                >
+                    <View style={estilos.fondoTexto}>
+                        <Text style={estilos.texto}>
+                            {titulo}
+                        </Text>
+                    </View>
                 </View>
             </ImageBackground>
         </TouchableOpacity>
@@ -40,14 +44,17 @@ const estilos = StyleSheet.create({
     contenedor: {
         flex: 1,
         height: 150,
-        marginVertical: 4,
-        marginHorizontal: 4,
+        margin: 4,
     },
     imagen: {
         backgroundColor: '#ede7f6',
         resizeMode: 'cover',
         flex: 1,
         height: 150,
+    },
+    contenedorText: {
+        flex: 1,
+        justifyContent: 'flex-end',
     },
     texto: {
         color: '#fff',
