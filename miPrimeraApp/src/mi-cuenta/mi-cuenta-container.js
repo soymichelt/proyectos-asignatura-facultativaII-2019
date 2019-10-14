@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import MiCuenta from './mi-cuenta';
 
+import BusquedaContainer from './../busqueda/busqueda-container';
+
 class MiCuentaContainer extends Component {
 
     constructor(props) {
@@ -62,19 +64,44 @@ class MiCuentaContainer extends Component {
         // Inicializamos el estado con nuestro array de datos
         this.state = {
             publicaciones: datos,
+            pantalla: 'perfil',
         };
 
     }
 
+    cambiarPantalla = (pantallaNueva) => {
+        this.setState({
+            pantalla: pantallaNueva,
+        });
+    };
+
     render() {
 
-        const { publicaciones } = this.state;
+        const {
+            publicaciones,
+            pantalla,
+        } = this.state;
 
-        return (
-            <MiCuenta
-                publicaciones={ publicaciones }
-            />
-        );
+        if(pantalla === 'perfil') {
+            return (
+                <MiCuenta
+                    publicaciones={ publicaciones }
+                    cambiarPantalla={this.cambiarPantalla}
+                />
+            );
+        }
+
+        if(pantalla === 'busqueda') {
+            return (
+                <BusquedaContainer
+                    publicaciones={ publicaciones }
+                    cambiarPantalla={this.cambiarPantalla}
+                />
+            );
+        }
+
+        if(pantalla === 'publicar') {
+        }
 
     }
 

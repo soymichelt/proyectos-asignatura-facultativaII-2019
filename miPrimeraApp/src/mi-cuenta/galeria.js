@@ -13,12 +13,17 @@ import BotonesDePublicacion from './botones-de-publicacion';
 
 const Galeria = (props) => {
 
-    const { publicaciones } = props;
+    const {
+        publicaciones,
+        cambiarPantalla,
+    } = props;
 
     return(
         <FlatList
             ListHeaderComponent={
-                <BotonesDePublicacion />
+                <BotonesDePublicacion
+                    cambiarPantalla={cambiarPantalla}
+                />
             }
             data={publicaciones}
             renderItem={

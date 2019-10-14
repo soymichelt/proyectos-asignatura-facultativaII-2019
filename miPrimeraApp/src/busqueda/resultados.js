@@ -1,20 +1,22 @@
 import React from 'react';
 
 import {
-    View,
-    StyleSheet,
     SafeAreaView,
     ScrollView,
+    View,
+    StyleSheet,
 } from 'react-native';
 
-import Perfil from './perfil';
-import Galeria from './galeria';
+import CuadroDeBusqueda from './cuadro-de-busqueda';
+import Galeria from './../mi-cuenta/galeria';
 import Separador from './../utilidades/separador';
 
-const MiCuenta = (props) => {
+const Resultados = (props) => {
 
     const {
         publicaciones,
+        textoABuscar,
+        eventoCambiarTexto,
         cambiarPantalla,
     } = props;
 
@@ -22,10 +24,13 @@ const MiCuenta = (props) => {
         <SafeAreaView>
             <ScrollView>
                 <View style={estilos.contenedor}>
-                    <Perfil />
+                    <CuadroDeBusqueda
+                        textoABuscar={textoABuscar}
+                        eventoCambiarTexto={eventoCambiarTexto}
+                        cambiarPantalla={cambiarPantalla}
+                    />
                     <Separador />
                     <Galeria
-                        cambiarPantalla={cambiarPantalla}
                         publicaciones={publicaciones}
                     />
                 </View>
@@ -35,19 +40,10 @@ const MiCuenta = (props) => {
 
 };
 
-/*
-    Definimos una constante a la cual le asignaremos
-    'StyleSheet.create({ AQUI VAN NUESTROS ESTILOS })'
-*/
 const estilos = StyleSheet.create({
-    /* aquí empezamos a escribir nuestros estilos */
     contenedor: {
         flex: 1,
     },
-    separador: {
-        height: 8,
-    },
-    /* fin de estilos */
 });
 
-export default MiCuenta;
+export default Resultados;

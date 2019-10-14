@@ -8,7 +8,11 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-const BotonesDePublicacion = () => {
+const BotonesDePublicacion = (props) => {
+
+    const {
+        cambiarPantalla,
+    } = props;
 
     return (
         <View
@@ -25,6 +29,7 @@ const BotonesDePublicacion = () => {
             >
                 <TouchableOpacity
                     style={estilos.botonPublicar}
+                    onPress={() => { cambiarPantalla('publicar'); }}
                 >
                     <Image
                         style={estilos.imagenBuscar}
@@ -36,8 +41,10 @@ const BotonesDePublicacion = () => {
                         Publicar
                     </Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity
                     style={estilos.botonBuscar}
+                    onPress={() => { cambiarPantalla('busqueda'); }}
                 >
                     <Image
                         style={estilos.imagenBuscar}
