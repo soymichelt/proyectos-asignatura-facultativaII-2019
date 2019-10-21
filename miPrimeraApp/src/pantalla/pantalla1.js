@@ -14,9 +14,10 @@ const Pantalla1 = (props) => {
     return (
         <View>
             <Text>Pantalla 1</Text>
-            <TextInput 
-            onChangeText={cambiarText}
-            defaultValue={nombre}/>
+            <TextInput
+                onChangeText={cambiarText}
+                defaultValue={nombre}
+            />
             <Button
                 title='Ir a pantalla 2'
                 onPress={
