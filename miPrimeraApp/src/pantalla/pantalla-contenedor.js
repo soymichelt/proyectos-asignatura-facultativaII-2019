@@ -11,7 +11,9 @@ class PantallaContenedor extends Component {
         //inicializamos el estado
         this.state = {
             vista: 'pantalla1',
+            value:''
         };
+
     }
 
     cambiarPantalla = (pantalla) => {
@@ -22,22 +24,33 @@ class PantallaContenedor extends Component {
 
     };
 
+    handledtext = (data) => {
+        this.setState({
+            value: data,
+        });
+    }
+
     render() {
 
-        const { vista } = this.state;
+        const { vista,value } = this.state;
 
         if(vista === 'pantalla1') {
             return (
                 <Pantalla1
-                    cambiarPantalla={this.cambiarPantalla}
+                    navegar={this.cambiarPantalla}
+                    cambiarText={this.handledtext}
+                    nombre={value}
                 />
             );
         }
 
         if(vista === 'pantalla2') {
+            const {value} = this.state;
             return (
                 <Pantalla2
                     cambiarPantalla={this.cambiarPantalla}
+                    nombre = {value}
+
                 />
             );
         }
