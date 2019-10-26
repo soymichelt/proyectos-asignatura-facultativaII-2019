@@ -4,20 +4,25 @@ import {
     View,
     Text,
     Button,
+    TextInput
 } from 'react-native';
 
 const Pantalla1 = (props) => {
 
-    const { cambiarPantalla } = props;
+    const { navegar, cambiarText, nombre } = props;
 
     return (
         <View>
             <Text>Pantalla 1</Text>
+            <TextInput
+                onChangeText={cambiarText}
+                defaultValue={nombre}
+            />
             <Button
                 title='Ir a pantalla 2'
                 onPress={
                     () => {
-                        cambiarPantalla('pantalla2');
+                        navegar('pantalla2');
                     }
                 }
             />

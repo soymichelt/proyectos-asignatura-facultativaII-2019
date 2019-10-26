@@ -8,7 +8,7 @@ import {
 
 const Pantalla2 = (props) => {
 
-    const { cambiarPantalla } = props;
+    const { cambiarPantalla, nombre } = props;
 
     return(
         <View>
@@ -21,6 +21,7 @@ const Pantalla2 = (props) => {
                     }
                 }
             />
+            <Text>{nombre}</Text>
         </View>
     );
 
