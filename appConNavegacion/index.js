@@ -4,7 +4,9 @@
 
 import {AppRegistry} from 'react-native';
 import App from './App';
-import NavegacionConTab from './src/navegacion/componentes/navegacion-con-tab';
+import NavegacionTab from './src/navegacion/componentes/navegacion-tab';
+import NavegacionDrawer from './src/navegacion/componentes/navegacion-drawer';
+import NavegacionStack from './src/navegacion/componentes/navegacion-stack';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => NavegacionConTab);
+AppRegistry.registerComponent(appName, () => NavegacionStack);
