@@ -17,10 +17,15 @@ class CrearContainer extends Component {
     }
 
     eventoAgregarAlumno = () => {
+        const { nombre, telefono } = this.state;
         this.props.agregarAlumno({
-            nombre: this.props.nombre,
-            telefono: this.props.telefono,
+            nombre: nombre,
+            telefono: telefono,
         })
+        this.setState({
+            nombre: '',
+            telefono: '',
+        });
     }
 
     eventoTerminarAlumno = () =>  {

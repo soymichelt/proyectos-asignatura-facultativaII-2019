@@ -9,7 +9,7 @@ class ListadoContenedor extends Component {
     }
 
     eventoAgregar = () => {
-        this.props.navigation.navigate('CrearAlumno')
+        this.props.navigation.navigate('Agregar')
     }
 
     render() {
@@ -39,6 +39,8 @@ const mapStateToProps = (newState, newProps) => {
             alumnos = listado
         }
     }
+
+    console.log(`Alumnos: ${alumnos}`);
 
     return {
         alumnos: alumnos,

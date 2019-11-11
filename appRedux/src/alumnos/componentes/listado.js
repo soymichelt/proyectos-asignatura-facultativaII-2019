@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     View,
-    ScrollView,
+    SafeAreaView,
     Text,
     FlatList,
     TouchableOpacity,
@@ -15,7 +15,7 @@ const Listado = (props) => {
     } = props
 
     return (
-        <ScrollView>
+        <>
             <View>
                 <TouchableOpacity
                     onPress={eventoAgregar}
@@ -24,12 +24,13 @@ const Listado = (props) => {
                 </TouchableOpacity>
             </View>
             <FlatList
+                style={{backgroundColor: '#eee' }}
                 renderItem={({ item }) => <Item
                     item={item}
                 />}
                 data={data}
             />
-        </ScrollView>
+        </>
     )
 
 }
@@ -40,7 +41,7 @@ const Item = (props) => {
 
     return (
         <TouchableOpacity>
-            <View>
+            <View style={{ flex: 1, backgroundColor: 'yellow', borderColor: 'blue', borderWidth: 2, margin: 4, }}>
                 <View>
                     <View>
                         <Text>{item.nombre}</Text>
