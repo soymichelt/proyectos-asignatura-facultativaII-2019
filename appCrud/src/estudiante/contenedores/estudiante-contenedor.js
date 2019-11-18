@@ -1,8 +1,10 @@
- import React, { Component } from 'react';
-
- import Listado from './../componentes/listado';
- import Guardar from './../componentes/guardar';
- import Eliminar from '../componentes/eliminar';
+import React, { Component } from 'react';
+import {
+    AsyncStorage,
+} from 'react-native';
+import Listado from './../componentes/listado';
+import Guardar from './../componentes/guardar';
+import Eliminar from '../componentes/eliminar';
 
  class EstudianteContenedor extends Component {
 
@@ -42,12 +44,13 @@
         })
     }
 
-    eventoGuardar = () => {
+    eventoGuardar = async () => {
         const { nombreAlumno, alumnos } = this.state
         alumnos.push({
             key: (alumnos.length + 1).toString(),
             nombreAlumno: nombreAlumno,
         })
+        await this.modificarEstudiantes(alumnos);
         this.setState({
             nombreAlumno: '',
             alumnos: alumnos,
@@ -56,16 +59,27 @@
     }
 
     /* para eliminar */
-    eventoBorrar = () => {
+    eventoBorrar = async () => {
         const { alumnoSeleccionadoId, alumnos, } = this.state;
         const indiceEliminar = alumnos.findIndex(item => item.key === alumnoSeleccionadoId);
         if(indiceEliminar > -1) {
             alumnos.splice(indiceEliminar, 1);
         }
+        await this.modificarEstudiantes(alumnos);
         this.setState({
             alumnos: alumnos,
             pantalla: 'listado',
         });
+    }
+
+    obtenerEstudiantes = async () => {
+        const datos = await AsyncStorage.getItem('DATOS');
+        return datos;
+    }
+
+    modificarEstudiantes = async (estudiantes) => {
+        const datosConvertidos = JSON.stringify(estudiantes);
+        await AsyncStorage.setItem('DATOS', datosConvertidos);
     }
 
     render() {
@@ -100,6 +114,16 @@
                 )
         }
 
+    }
+
+    async componentDidMount() {
+        const datos = await this.obtenerEstudiantes();
+        if(datos !== null) {
+            const estudiantes = JSON.parse(datos);
+            this.setState({
+                alumnos: estudiantes,
+            });
+        }
     }
 
  }
